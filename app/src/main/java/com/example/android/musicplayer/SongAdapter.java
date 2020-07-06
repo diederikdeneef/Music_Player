@@ -6,71 +6,55 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
+public class SongAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<String> mData;
-    private LayoutInflater mInflater;
-    private ItemClickListener mClickListener;
+    private Context context;
+    private ArrayList<SongInfo> songInfo;
 
-    // data is passed into the constructor
-    SongAdapter(Context context, List<String> data) {
-        this.mInflater = LayoutInflater.from(context);
-        this.mData = data;
+    public SongAdapter(Context context, ArrayList<SongInfo> songInfo) {
+        this.context = context;
+        this.songInfo = songInfo;
     }
 
-    // inflates the row layout from xml when needed
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.song_item_minimal, parent, false);
-        return new ViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+        View view;
+        //view = LayoutInflater.from(context).inflate(R.layout.song_item_minimal, viewGroup, false);
+        view = LayoutInflater.from(context).inflate(R.layout.song_item, viewGroup, false);
+        return new SongViewHolder(view);
     }
 
-    // binds the data to the TextView in each row
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        String animal = mData.get(position);
-        holder.myTextView.setText(animal);
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
+        ((SongViewHolder) viewHolder).setSongDetails(songInfo.get(position));
     }
 
-    // total number of rows
     @Override
     public int getItemCount() {
-        return mData.size();
+        return songInfo.size();
     }
 
+    class SongViewHolder extends RecyclerView.ViewHolder {
 
-    // stores and recycles views as they are scrolled off screen
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView myTextView;
+        private TextView txtSongTitle;
+        private TextView txtArtistName;
 
-        ViewHolder(View itemView) {
+        SongViewHolder(@NonNull View itemView) {
             super(itemView);
-            myTextView = itemView.findViewById(R.id.song_title);
-            itemView.setOnClickListener(this);
+            txtSongTitle = itemView.findViewById(R.id.song_title);
+            txtArtistName = itemView.findViewById(R.id.artist_name);
         }
 
-        @Override
-        public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+        void setSongDetails(SongInfo songInfo) {
+            txtSongTitle.setText(songInfo.getSongTitle());
+            txtArtistName.setText(songInfo.getArtistName());
         }
     }
 
-    // convenience method for getting data at click position
-    String getItem(int id) {
-        return mData.get(id);
-    }
-
-    // allows clicks events to be caught
-    void setClickListener(ItemClickListener itemClickListener) {
-        this.mClickListener = itemClickListener;
-    }
-
-    // parent activity will implement this method to respond to click events
-    public interface ItemClickListener {
-        void onItemClick(View view, int position);
-    }
 }
