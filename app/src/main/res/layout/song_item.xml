@@ -6,50 +6,57 @@
 
     <ImageView
         android:id="@+id/album_art_song_item"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:padding="8dp"
-        android:src="@drawable/ic_launcher_foreground"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_action_music_note"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/song_info_text_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_weight="1"/>
 
     <LinearLayout
         android:id="@+id/song_info_text_view"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="8dp"
+        android:gravity="center_vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/album_art_song_item"
         app:layout_constraintRight_toLeftOf="@id/song_info_item_menu"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_weight="6">
 
         <TextView
             android:id="@+id/song_title_textView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Song title"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:gravity="center_vertical"/>
 
         <TextView
             android:id="@+id/artist_name_textView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Artist" />
+            android:text="Artist"
+            android:layout_gravity="center_vertical"
+            />
     </LinearLayout>
 
     <ImageButton
         android:id="@+id/song_info_item_menu"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:onClick="showPopup"
-        android:padding="8dp"
-        android:src="@drawable/ic_baseline_more_vert_24"
+        android:padding="0dp"
+        android:src="@drawable/ic_action_play_outline"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/song_info_text_view"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/song_info_text_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_weight="1"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
