@@ -10,5 +10,7 @@ public class NowPlaying extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.now_playing);
+
+        String songTitle = getIntent().getExtras().getString("songTitle", "");
     }
 }

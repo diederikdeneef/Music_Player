@@ -38,8 +38,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //Log.d("TAG", "onItemClick: song title " + songDetails.get(i));
-                //Toast.makeText(MainActivity.this, "You clicked on: " + songDetails.get(i), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "You clicked on: " + songDetails.get(i).getSongTitle(), Toast.LENGTH_LONG).show();
+                String songTitle = songDetails.get(i).getSongTitle();
+                //String artistName = songDetails.get(i).getArtistName();
+
                 Intent nowPlayingIntent = new Intent(MainActivity.this, NowPlaying.class );
+                nowPlayingIntent.putExtra("songTitle", songTitle);
+
                 startActivity(nowPlayingIntent);
             }
         });
