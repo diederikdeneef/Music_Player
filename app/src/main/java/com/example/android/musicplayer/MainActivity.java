@@ -33,17 +33,23 @@ public class MainActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.music_library);
         listView.setAdapter(adapter);
 
-        // set an item click listener
+        // set an item click listener on the adapter views
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //Log.d("TAG", "onItemClick: song title " + songDetails.get(i));
-                Toast.makeText(MainActivity.this, "You clicked on: " + songDetails.get(i).getSongTitle(), Toast.LENGTH_LONG).show();
-                String songTitle = songDetails.get(i).getSongTitle();
-                //String artistName = songDetails.get(i).getArtistName();
+                //Toast.makeText(MainActivity.this, "You clicked on: " + songDetails.get(i).getSongTitle(), Toast.LENGTH_LONG).show();
 
+                // Get the song title and artist name to pass to new activity
+                String songTitle = songDetails.get(i).getSongTitle();
+                String artistName = songDetails.get(i).getArtistName();
+
+                // Set intent to start Now Playing activity on a click event
                 Intent nowPlayingIntent = new Intent(MainActivity.this, NowPlaying.class );
+
+                // pass song title and artist name of the click event to the intent
                 nowPlayingIntent.putExtra("songTitle", songTitle);
+                nowPlayingIntent.putExtra("artistName", artistName);
 
                 startActivity(nowPlayingIntent);
             }
