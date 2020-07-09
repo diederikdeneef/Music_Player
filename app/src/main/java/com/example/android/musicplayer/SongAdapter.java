@@ -1,11 +1,14 @@
 package com.example.android.musicplayer;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,15 +36,66 @@ public class SongAdapter extends ArrayAdapter<SongDetails> {
         }
 
         // get the songDetails object at this position in the list
-        SongDetails currentSong = getItem(position);
+        final SongDetails currentSong = getItem(position);
 
         // Find the song title textView in song_item.xml layout and set the song title
         TextView songTitleTextView = (TextView) listItemView.findViewById(R.id.song_title_textView);
         songTitleTextView.setText(currentSong.getSongTitle());
 
+        // set an onClickListener on the song_title_textView
+        songTitleTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "You clicked the song title", Toast.LENGTH_SHORT).show();
+                Intent songDetailsIntent = new Intent(getContext(), SongDetailsActivity.class);
+                songDetailsIntent.putExtra("songTitle", currentSong.getSongTitle());
+                songDetailsIntent.putExtra("artistName", currentSong.getArtistName());
+                view.getContext().startActivity(songDetailsIntent);
+            }
+        });
+
         // Find the artist name textView in song_item.xml layout and set the artist name
         TextView artistNameTextView = (TextView) listItemView.findViewById(R.id.artist_name_textView);
         artistNameTextView.setText(currentSong.getArtistName());
+
+        // set an onClickListener on the artist_name_textView
+        artistNameTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "You clicked the artist name", Toast.LENGTH_SHORT).show();
+                Intent songDetailsIntent = new Intent(getContext(), SongDetailsActivity.class);
+                songDetailsIntent.putExtra("songTitle", currentSong.getSongTitle());
+                songDetailsIntent.putExtra("artistName", currentSong.getArtistName());
+                view.getContext().startActivity(songDetailsIntent);
+            }
+        });
+
+        // Find album art imageView in song_item.xml and set an onClickListener
+        ImageView albumArtImageView = (ImageView) listItemView.findViewById(R.id.album_art_song_item);
+        albumArtImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "You clicked the album art icon", Toast.LENGTH_SHORT).show();
+                Intent songDetailsIntent = new Intent(getContext(), SongDetailsActivity.class);
+                songDetailsIntent.putExtra("songTitle", currentSong.getSongTitle());
+                songDetailsIntent.putExtra("artistName", currentSong.getArtistName());
+                view.getContext().startActivity(songDetailsIntent);
+            }
+        });
+
+        // Find play icon imageView in song_item.xml and set an onClickListener
+        ImageView playIconImageView = (ImageView) listItemView.findViewById(R.id.play_button);
+        playIconImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "You clicked the play button", Toast.LENGTH_SHORT).show();
+                Intent nowPlayingIntent = new Intent(getContext(), NowPlaying.class);
+                nowPlayingIntent.putExtra("songTitle", currentSong.getSongTitle());
+                nowPlayingIntent.putExtra("artistName", currentSong.getArtistName());
+                view.getContext().startActivity(nowPlayingIntent);
+            }
+        });
+
 
         // return the listItem so it can be shown in the ListView
         return listItemView;
