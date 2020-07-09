@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         // Generate sample data to populate the ListView
         final ArrayList<SongDetails> songDetails = new ArrayList<SongDetails>();
         for (int i = 1; i <= 50; i++) {
-            songDetails.add(new SongDetails("Song " + i, "Artist " + i));
+            songDetails.add(new SongDetails("Song " + i, "Artist " + i, "Album " + i*i));
         }
 
         // set the adapter

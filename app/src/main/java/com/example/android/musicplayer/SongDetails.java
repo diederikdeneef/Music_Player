@@ -8,15 +8,19 @@ public class SongDetails {
     // Name of the Artist
     private String mArtistName;
 
+    // Name of the Album
+    private String mAlbumName;
+
     /**
      * Constructor --> create new song details object
      *
      * @param songTitle: title of the song
      * @param artistName: name of the artist
      */
-    public SongDetails (String songTitle, String artistName) {
+    public SongDetails (String songTitle, String artistName, String albumName) {
         mSongTitle = songTitle;
         mArtistName = artistName;
+        mAlbumName = albumName;
     }
 
     /**
@@ -31,5 +35,12 @@ public class SongDetails {
      */
     public String getArtistName() {
         return mArtistName;
+    }
+
+    /**
+     * Get the album name
+     */
+    public String getAlbumName() {
+        return mAlbumName;
     }
 }

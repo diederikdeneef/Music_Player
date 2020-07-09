@@ -46,10 +46,11 @@ public class SongAdapter extends ArrayAdapter<SongDetails> {
         songTitleTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "You clicked the song title", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "You clicked the song title", Toast.LENGTH_SHORT).show();
                 Intent songDetailsIntent = new Intent(getContext(), SongDetailsActivity.class);
                 songDetailsIntent.putExtra("songTitle", currentSong.getSongTitle());
                 songDetailsIntent.putExtra("artistName", currentSong.getArtistName());
+                songDetailsIntent.putExtra("albumName", currentSong.getAlbumName());
                 view.getContext().startActivity(songDetailsIntent);
             }
         });
@@ -62,10 +63,11 @@ public class SongAdapter extends ArrayAdapter<SongDetails> {
         artistNameTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "You clicked the artist name", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "You clicked the artist name", Toast.LENGTH_SHORT).show();
                 Intent songDetailsIntent = new Intent(getContext(), SongDetailsActivity.class);
                 songDetailsIntent.putExtra("songTitle", currentSong.getSongTitle());
                 songDetailsIntent.putExtra("artistName", currentSong.getArtistName());
+                songDetailsIntent.putExtra("albumName", currentSong.getAlbumName());
                 view.getContext().startActivity(songDetailsIntent);
             }
         });
@@ -75,10 +77,11 @@ public class SongAdapter extends ArrayAdapter<SongDetails> {
         albumArtImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "You clicked the album art icon", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "You clicked the album art icon", Toast.LENGTH_SHORT).show();
                 Intent songDetailsIntent = new Intent(getContext(), SongDetailsActivity.class);
                 songDetailsIntent.putExtra("songTitle", currentSong.getSongTitle());
                 songDetailsIntent.putExtra("artistName", currentSong.getArtistName());
+                songDetailsIntent.putExtra("albumName", currentSong.getAlbumName());
                 view.getContext().startActivity(songDetailsIntent);
             }
         });
@@ -88,14 +91,13 @@ public class SongAdapter extends ArrayAdapter<SongDetails> {
         playIconImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "You clicked the play button", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "You clicked the play button", Toast.LENGTH_SHORT).show();
                 Intent nowPlayingIntent = new Intent(getContext(), NowPlaying.class);
                 nowPlayingIntent.putExtra("songTitle", currentSong.getSongTitle());
                 nowPlayingIntent.putExtra("artistName", currentSong.getArtistName());
                 view.getContext().startActivity(nowPlayingIntent);
             }
         });
-
 
         // return the listItem so it can be shown in the ListView
         return listItemView;
