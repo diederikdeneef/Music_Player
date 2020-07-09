@@ -1,7 +1,11 @@
 package com.example.android.musicplayer;
 
+import android.graphics.drawable.Icon;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,5 +28,41 @@ public class SongDetailsActivity extends AppCompatActivity {
 
         TextView albumNameDetails = (TextView) findViewById(R.id.album_name_song_details);
         albumNameDetails.setText(albumName);
+
+        // set onClickListener for the home icon
+        ImageView homeIcon = (ImageView) findViewById(R.id.home_button);
+        homeIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(SongDetailsActivity.this, "You clicked the home icon", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // set onClickListener for the add to basket icon
+        ImageView basketIcon = (ImageView) findViewById(R.id.add_to_basket);
+        basketIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(SongDetailsActivity.this, "You clicked the add to basket icon", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // set onClickListener for the add to que icon
+        ImageView queIcon = (ImageView) findViewById(R.id.add_to_que);
+        queIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(SongDetailsActivity.this, "You clicked the add to que icon", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // set onClickListener for the play now icon
+        ImageView playIcon = (ImageView) findViewById(R.id.play_button);
+        playIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(SongDetailsActivity.this, "You clicked the play now icon", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
