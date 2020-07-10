@@ -1,5 +1,6 @@
 package com.example.android.musicplayer;
 
+import android.content.Intent;
 import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.view.View;
@@ -29,12 +30,14 @@ public class SongDetailsActivity extends AppCompatActivity {
         TextView albumNameDetails = (TextView) findViewById(R.id.album_name_song_details);
         albumNameDetails.setText(albumName);
 
-        // set onClickListener for the home icon
+        // set onClickListener and intent for the home icon
         ImageView homeIcon = (ImageView) findViewById(R.id.home_button);
         homeIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(SongDetailsActivity.this, "You clicked the home icon", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(SongDetailsActivity.this, "You clicked the home icon", Toast.LENGTH_SHORT).show();
+                Intent homeIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(homeIntent);
             }
         });
 
