@@ -68,5 +68,15 @@ public class NowPlaying extends AppCompatActivity {
                 startActivity(songDetailsIntent);
             }
         });
+
+        // Set onClickListener and intent on home icon
+        ImageView homeNowPlaying = (ImageView) findViewById(R.id.home_button_now_playing);
+        homeNowPlaying.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent homeIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(homeIntent);
+            }
+        });
     }
 }
