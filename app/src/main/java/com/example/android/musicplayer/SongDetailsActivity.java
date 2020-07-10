@@ -17,8 +17,8 @@ public class SongDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.song_details);
 
-        String songTitle = getIntent().getExtras().getString("songTitle", "");
-        String artistName = getIntent().getExtras().getString("artistName", "");
+        final String songTitle = getIntent().getExtras().getString("songTitle", "");
+        final String artistName = getIntent().getExtras().getString("artistName", "");
         String albumName = getIntent().getExtras().getString("albumName", "");
 
         TextView songTitleDetails = (TextView) findViewById(R.id.song_title_song_details);
@@ -65,6 +65,10 @@ public class SongDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(SongDetailsActivity.this, "You clicked the play now icon", Toast.LENGTH_SHORT).show();
+                Intent nowPlayingIntent = new Intent(getApplicationContext(), NowPlaying.class);
+                nowPlayingIntent.putExtra("songTitle", songTitle);
+                nowPlayingIntent.putExtra("artistName", artistName);
+                startActivity(nowPlayingIntent);
             }
         });
     }
