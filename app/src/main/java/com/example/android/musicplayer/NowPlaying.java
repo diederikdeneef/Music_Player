@@ -1,7 +1,9 @@
 package com.example.android.musicplayer;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -10,6 +12,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class NowPlaying extends AppCompatActivity {
+    ImageView playButton;
+    ImageView pauseButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +80,26 @@ public class NowPlaying extends AppCompatActivity {
             public void onClick(View view) {
                 Intent homeIntent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(homeIntent);
+            }
+        });
+
+        // Set play and pause buttons programmatically
+        playButton = findViewById(R.id.play_button_now_playing);
+        playButton.setImageResource(R.drawable.ic_action_play_outline);
+        playButton.setTag("playing");
+        String tag = (String) playButton.getTag();
+//        Log.d("TAG", "ID of the play button is: " + tag);
+
+        playButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(playButton.getTag().toString() == "playing"){
+                    playButton.setImageResource(R.drawable.ic_action_pause_outline);
+                    playButton.setTag("paused");
+                } else if (playButton.getTag().toString() == "paused"){
+                    playButton.setImageResource(R.drawable.ic_action_play_outline);
+                    playButton.setTag("playing");
+                }
             }
         });
     }
