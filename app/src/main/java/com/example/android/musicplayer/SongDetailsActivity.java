@@ -17,9 +17,9 @@ public class SongDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.song_details);
 
-        final String songTitle = getIntent().getExtras().getString("songTitle", "");
-        final String artistName = getIntent().getExtras().getString("artistName", "");
-        String albumName = getIntent().getExtras().getString("albumName", "");
+        final String songTitle = getIntent().getExtras().getString("songTitle", "No song title available");
+        final String artistName = getIntent().getExtras().getString("artistName", "No artist name available");
+        final String albumName = getIntent().getExtras().getString("albumName", "No album name available");
 
         TextView songTitleDetails = (TextView) findViewById(R.id.song_title_song_details);
         songTitleDetails.setText(songTitle);
@@ -68,6 +68,7 @@ public class SongDetailsActivity extends AppCompatActivity {
                 Intent nowPlayingIntent = new Intent(getApplicationContext(), NowPlaying.class);
                 nowPlayingIntent.putExtra("songTitle", songTitle);
                 nowPlayingIntent.putExtra("artistName", artistName);
+                nowPlayingIntent.putExtra("albumName", albumName);
                 startActivity(nowPlayingIntent);
             }
         });
