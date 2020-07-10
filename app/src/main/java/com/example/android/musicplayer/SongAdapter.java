@@ -95,6 +95,7 @@ public class SongAdapter extends ArrayAdapter<SongDetails> {
                 Intent nowPlayingIntent = new Intent(getContext(), NowPlaying.class);
                 nowPlayingIntent.putExtra("songTitle", currentSong.getSongTitle());
                 nowPlayingIntent.putExtra("artistName", currentSong.getArtistName());
+                nowPlayingIntent.putExtra("albumName", currentSong.getAlbumName());
                 view.getContext().startActivity(nowPlayingIntent);
             }
         });
