@@ -14,10 +14,10 @@ public class SongDetails {
     /**
      * Constructor --> create new song details object
      *
-     * @param songTitle: title of the song
+     * @param songTitle:  title of the song
      * @param artistName: name of the artist
      */
-    public SongDetails (String songTitle, String artistName, String albumName) {
+    public SongDetails(String songTitle, String artistName, String albumName) {
         mSongTitle = songTitle;
         mArtistName = artistName;
         mAlbumName = albumName;

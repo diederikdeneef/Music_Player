@@ -34,7 +34,6 @@ public class SongDetailsActivity extends AppCompatActivity {
         homeIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Toast.makeText(SongDetailsActivity.this, "You clicked the home icon", Toast.LENGTH_SHORT).show();
                 Intent homeIntent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(homeIntent);
             }
@@ -45,7 +44,7 @@ public class SongDetailsActivity extends AppCompatActivity {
         basketIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(SongDetailsActivity.this, "You clicked the add to basket icon", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SongDetailsActivity.this, "Shopping basket functionality not available at this time", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -54,7 +53,7 @@ public class SongDetailsActivity extends AppCompatActivity {
         queIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(SongDetailsActivity.this, "You clicked the add to que icon", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SongDetailsActivity.this, "Add to que functionality not available at this time", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -63,7 +62,6 @@ public class SongDetailsActivity extends AppCompatActivity {
         playIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(SongDetailsActivity.this, "You clicked the play now icon", Toast.LENGTH_SHORT).show();
                 Intent nowPlayingIntent = new Intent(getApplicationContext(), NowPlaying.class);
                 nowPlayingIntent.putExtra("songTitle", songTitle);
                 nowPlayingIntent.putExtra("artistName", artistName);
