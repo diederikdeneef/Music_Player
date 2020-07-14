@@ -1,19 +1,15 @@
 package com.example.android.musicplayer;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class NowPlaying extends AppCompatActivity {
     ImageView playButton;
-    ImageView pauseButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +17,9 @@ public class NowPlaying extends AppCompatActivity {
         setContentView(R.layout.now_playing);
 
         // pass song details from previous activity into now playing activity
-        final String songTitle = getIntent().getExtras().getString("songTitle", "No Title Available");
-        final String artistName = getIntent().getExtras().getString("artistName", "No Artist Name Available");
-        final String albumName = getIntent().getExtras().getString("albumName", "No Album Name Available");
+        String songTitle = getIntent().getExtras().getString("songTitle", "No Title Available");
+        String artistName = getIntent().getExtras().getString("artistName", "No Artist Name Available");
+        String albumName = getIntent().getExtras().getString("albumName", "No Album Name Available");
 
         // Set song title to the song title TextView
         TextView songTitleNowPlaying = (TextView) findViewById(R.id.song_title_now_playing);
@@ -33,15 +29,15 @@ public class NowPlaying extends AppCompatActivity {
         TextView artistNameNowPlaying = (TextView) findViewById(R.id.artist_name_now_playing);
         artistNameNowPlaying.setText(artistName);
 
+        final Intent songDetailsIntent = new Intent(getApplicationContext(), SongDetailsActivity.class);
+        songDetailsIntent.putExtra("songTitle", songTitle);
+        songDetailsIntent.putExtra("artistName", artistName);
+        songDetailsIntent.putExtra("albumName", albumName);
+
         // Set onClickListener and intent on the song title
         songTitleNowPlaying.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Toast.makeText(getApplicationContext(), "You clicked the song title", Toast.LENGTH_SHORT).show();
-                Intent songDetailsIntent = new Intent(getApplicationContext(), SongDetailsActivity.class);
-                songDetailsIntent.putExtra("songTitle", songTitle);
-                songDetailsIntent.putExtra("artistName", artistName);
-                songDetailsIntent.putExtra("albumName", albumName);
                 startActivity(songDetailsIntent);
             }
         });
@@ -50,11 +46,6 @@ public class NowPlaying extends AppCompatActivity {
         artistNameNowPlaying.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Toast.makeText(getApplicationContext(), "You clicked the artist name", Toast.LENGTH_SHORT).show();
-                Intent songDetailsIntent = new Intent(getApplicationContext(), SongDetailsActivity.class);
-                songDetailsIntent.putExtra("songTitle", songTitle);
-                songDetailsIntent.putExtra("artistName", artistName);
-                songDetailsIntent.putExtra("albumName", albumName);
                 startActivity(songDetailsIntent);
             }
         });
@@ -64,11 +55,6 @@ public class NowPlaying extends AppCompatActivity {
         albumArtNowPlaying.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Toast.makeText(getApplicationContext(), "You clicked the album art", Toast.LENGTH_SHORT).show();
-                Intent songDetailsIntent = new Intent(getApplicationContext(), SongDetailsActivity.class);
-                songDetailsIntent.putExtra("songTitle", songTitle);
-                songDetailsIntent.putExtra("artistName", artistName);
-                songDetailsIntent.putExtra("albumName", albumName);
                 startActivity(songDetailsIntent);
             }
         });
@@ -93,10 +79,10 @@ public class NowPlaying extends AppCompatActivity {
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(playButton.getTag().toString() == "playing"){
+                if (playButton.getTag().toString() == "playing") {
                     playButton.setImageResource(R.drawable.ic_action_pause_outline);
                     playButton.setTag("paused");
-                } else if (playButton.getTag().toString() == "paused"){
+                } else if (playButton.getTag().toString() == "paused") {
                     playButton.setImageResource(R.drawable.ic_action_play_outline);
                     playButton.setTag("playing");
                 }
