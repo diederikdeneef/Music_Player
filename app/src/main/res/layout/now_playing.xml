@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_weight="5" />
+        app:layout_constraintVertical_weight="8" />
 
     <ImageView
         android:id="@+id/home_button_now_playing"
@@ -102,22 +102,13 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="16dp"
-        app:layout_constraintBottom_toTopOf="@id/now_playing_que"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/skip_next_button"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@id/skip_previous_button"
         app:layout_constraintTop_toBottomOf="@id/play_button_now_playing"
         app:layout_constraintVertical_weight="1" />
 
-    <ListView
-        android:id="@+id/now_playing_que"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/seekbar_now_playing"
-        app:layout_constraintVertical_weight="5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
